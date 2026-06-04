@@ -25,6 +25,8 @@ class ProductController extends Controller
         $validated = $request->validate([
             'name' => 'required|string|max:255',
             'description' => 'nullable|string',
+            'scent_notes' => 'nullable|string|max:255',
+            'longevity' => 'nullable|string|max:255',
             'price' => 'required|numeric',
             'stock' => 'required|integer',
             'category_id' => 'required|exists:categories,id',
@@ -46,6 +48,8 @@ class ProductController extends Controller
         $validated = $request->validate([
             'name' => 'required|string|max:255',
             'description' => 'nullable|string',
+            'scent_notes' => 'nullable|string|max:255',
+            'longevity' => 'nullable|string|max:255',
             'price' => 'required|numeric',
             'stock' => 'required|integer',
             'category_id' => 'required|exists:categories,id',

@@ -15,6 +15,8 @@ return new class extends Migration
             $table->id();
             $table->string('name');
             $table->text('description')->nullable();
+            $table->string('scent_notes')->nullable();
+            $table->string('longevity')->nullable();
             $table->decimal('price', 15, 2);
             $table->integer('stock')->default(0);
             $table->string('image')->nullable();

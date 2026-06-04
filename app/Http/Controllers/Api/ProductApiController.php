@@ -8,9 +8,18 @@ use App\Models\Product;
 
 class ProductApiController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
-        return response()->json(Product::with('category')->get());
+        if ($request->expectsJson()) {
+            return response()->json(Product::with('category')->get());
+        }
+
+        // If accessed via web browser, redirect to the appropriate UI page
+        if (auth()->check() && auth()->user()->role === 'admin') {
+            return redirect()->route('products.index');
+        }
+
+        return redirect()->route('public.fragrances');
     }
 
     public function store(Request $request)
@@ -26,9 +35,17 @@ class ProductApiController extends Controller
         return response()->json($product, 201);
     }
 
-    public function show(Product $product)
+    public function show(Request $request, Product $product)
     {
-        return response()->json($product->load('category'));
+        if ($request->expectsJson()) {
+            return response()->json($product->load('category'));
+        }
+
+        if (auth()->check() && auth()->user()->role === 'admin') {
+            return redirect()->route('products.index');
+        }
+
+        return redirect()->route('public.fragrances');
     }
 
     public function update(Request $request, Product $product)
