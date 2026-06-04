@@ -3,125 +3,50 @@
 namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
-use App\Models\Product;
 use Illuminate\Http\Request;
-use App\Http\Requests\StoreProductRequest;
-use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Log;
+use App\Models\Product;
 
 class ProductApiController extends Controller
 {
-    // GET: Menampilkan semua produk
     public function index()
     {
-        try {
-            $products = Product::with(['category', 'user'])->get();
-            return response()->json([
-                'message' => 'Berhasil mengambil semua data produk',
-                'data' => $products
-            ], 200);
-        } catch (\Throwable $e) {
-            Log::error('Error get products API: ' . $e->getMessage());
-            return response()->json(['message' => 'Terjadi kesalahan server'], 500);
-        }
+        return response()->json(Product::with('category')->get());
     }
 
-    // POST: Menyimpan data (Dari Modul)
-    public function store(StoreProductRequest $request)
+    public function store(Request $request)
     {
-        try {
-            $validated = $request->validated();
-            $validated['user_id'] = Auth::id();
-            
-            $product = Product::create($validated);
+        $validated = $request->validate([
+            'name' => 'required|string',
+            'price' => 'required|numeric',
+            'stock' => 'required|integer',
+            'category_id' => 'required|exists:categories,id'
+        ]);
 
-            Log::info('Menambah data produk', [
-                'list' => $product
-            ]);
-
-            return response()->json([
-                'message' => 'Produk berhasil ditambahkan!!',
-                'data' => $product,
-            ], 201);
-        } catch (\Throwable $e) {
-            Log::error('Error saat menambah product', [
-                'message' => $e->getMessage(),
-            ]);
-            return response()->json(['message' => 'Gagal menambah produk'], 500);
-        }
+        $product = Product::create($validated);
+        return response()->json($product, 201);
     }
 
-    // GET: Menampilkan data by ID (Dari Modul)
-    public function show(int $id)
+    public function show(Product $product)
     {
-        try {
-            $product = Product::with('category')->find($id);
-
-            if (!$product) {
-                return response()->json([
-                    'message' => 'Product tidak ditemukan',
-                ], 404);
-            }
-
-            return response()->json([
-                'message' => 'Product retrieved successfully',
-                'data' => $product
-            ], 200);
-        } catch (\Throwable $e) {
-            Log::error('Gagal mengambil data produk', [
-                'message' => $e->getMessage(),
-            ]);
-            return response()->json(['message' => 'Gagal mengambil data produk'], 500);
-        }
+        return response()->json($product->load('category'));
     }
 
-    // PUT/PATCH: Mengupdate produk
-    public function update(Request $request, $id)
+    public function update(Request $request, Product $product)
     {
-        try {
-            $product = Product::find($id);
+        $validated = $request->validate([
+            'name' => 'sometimes|string',
+            'price' => 'sometimes|numeric',
+            'stock' => 'sometimes|integer',
+            'category_id' => 'sometimes|exists:categories,id'
+        ]);
 
-            if (!$product) {
-                return response()->json(['message' => 'Produk tidak ditemukan'], 404);
-            }
-
-            $validated = $request->validate([
-                'name' => 'sometimes|required|string|max:255',
-                'qty' => 'sometimes|required|integer',
-                'price' => 'sometimes|required|numeric',
-                'category_id' => 'sometimes|nullable|exists:categories,id',
-            ]);
-
-            $product->update($validated);
-
-            return response()->json([
-                'message' => 'Produk berhasil diupdate!',
-                'data' => $product
-            ], 200);
-        } catch (\Throwable $e) {
-            Log::error('Error update product API: ' . $e->getMessage());
-            return response()->json(['message' => 'Gagal mengupdate produk'], 500);
-        }
+        $product->update($validated);
+        return response()->json($product);
     }
 
-    // DELETE: Menghapus produk
-    public function destroy($id)
+    public function destroy(Product $product)
     {
-        try {
-            $product = Product::find($id);
-
-            if (!$product) {
-                return response()->json(['message' => 'Produk tidak ditemukan'], 404);
-            }
-
-            $product->delete();
-
-            return response()->json([
-                'message' => 'Produk berhasil dihapus!'
-            ], 200);
-        } catch (\Throwable $e) {
-            Log::error('Error delete product API: ' . $e->getMessage());
-            return response()->json(['message' => 'Gagal menghapus produk'], 500);
-        }
+        $product->delete();
+        return response()->json(null, 204);
     }
 }

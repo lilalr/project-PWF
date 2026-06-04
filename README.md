@@ -1,127 +1,58 @@
-## PRAKTIKUM 1
-### Hasil Tampilan
-![Hasil Tampilan](foto/Hasil.png)
+<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
 
----
+<p align="center">
+<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
+<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
+<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
+<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
+</p>
 
-## PRAKTIKUM 2
-### Tampilan About
-![Tampilan About](foto/About.png)
+## About Laravel
 
-### Tampilan Login
-![Tampilan Login](foto/Login.png)
+Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
 
-### Tampilan Register
-![Tampilan Register](foto/Register.png)
+- [Simple, fast routing engine](https://laravel.com/docs/routing).
+- [Powerful dependency injection container](https://laravel.com/docs/container).
+- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
+- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
+- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
+- [Robust background job processing](https://laravel.com/docs/queues).
+- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
 
----
+Laravel is accessible, powerful, and provides tools required for large, robust applications.
 
-## PRAKTIKUM 3
+## Learning Laravel
 
-### Model 
-<img width="100%" alt="Model Implementation 1" src="https://github.com/user-attachments/assets/5143eb7e-f0d6-4997-b52d-cb310119e47e" />
-<img width="100%" alt="Model Implementation 2" src="https://github.com/user-attachments/assets/fc7a3616-22cb-4258-b3bc-ea577df9e466" />
+Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
 
-### Migration
-<img width="100%" alt="Migration Script 1" src="https://github.com/user-attachments/assets/458b52c4-c93c-4de2-8ed7-e33209726766" />
-<img width="100%" alt="Migration Script 2" src="https://github.com/user-attachments/assets/249f305c-37a2-4fa9-b1fd-ef4bf95a061c" />
+In addition, [Laracasts](https://laracasts.com) contains thousands of video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
 
-### Database 
-<img width="1920" height="1080" alt="image" src="https://github.com/user-attachments/assets/8457a38a-36e6-424f-8c5c-814aa374ea76" />
+You can also watch bite-sized lessons with real-world projects on [Laravel Learn](https://laravel.com/learn), where you will be guided through building a Laravel application from scratch while learning PHP fundamentals.
 
----
+## Agentic Development
 
-## PRAKTIKUM 4
-### Product Controller
-<img width="1920" height="1080" alt="image" src="https://github.com/user-attachments/assets/93caaa6a-b581-4933-8403-d8455a1ee35a" />
+Laravel's predictable structure and conventions make it ideal for AI coding agents like Claude Code, Cursor, and GitHub Copilot. Install [Laravel Boost](https://laravel.com/docs/ai) to supercharge your AI workflow:
 
----
+```bash
+composer require laravel/boost --dev
 
-## PRAKTIKUM 5
-### CRUD PRODUCT (CREATE)
-<img width="1920" height="1080" alt="image" src="https://github.com/user-attachments/assets/58c2c1fa-19e4-4a01-b3ab-2877c8de64a1" />
+php artisan boost:install
+```
 
-### CRUD PRODUCT (LIST)
-<img width="1920" height="1080" alt="image" src="https://github.com/user-attachments/assets/a1118aea-4766-4c68-ba61-10d2e69dfaf4" />
+Boost provides your agent 15+ tools and skills that help agents build Laravel applications while following best practices.
 
-### CRUD PRODUCT (UPDATE)
-<img width="1920" height="1080" alt="image" src="https://github.com/user-attachments/assets/444215b9-d33b-47fe-bd6d-3393cc4c6e6f" />
-<img width="1920" height="1080" alt="image" src="https://github.com/user-attachments/assets/da8eb755-ad31-4180-b401-3eca4a4ed8ed" />
+## Contributing
 
-### CRUD PRODUCT (DELETE)
-<img width="1920" height="1080" alt="image" src="https://github.com/user-attachments/assets/12930a01-8314-4966-8056-df8d03a007fd" />
+Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
 
-### DATABASE
-<img width="1920" height="1080" alt="image" src="https://github.com/user-attachments/assets/cf58c2a6-cf68-44d1-8f1a-b7993c1f8b22" />
----
+## Code of Conduct
 
-## PRAKTIKUM 6
-### VALIDASI STORE (CREATE)
-<img width="1920" height="1080" alt="image" src="https://github.com/user-attachments/assets/6fa1b3a3-31f4-4ebb-8521-35686c3dc4b6" />
-<img width="1920" height="1080" alt="image" src="https://github.com/user-attachments/assets/7968ad8a-8469-43d4-806f-5455331aa7aa" />
+In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
 
-### VALIDASI STORE (UPDATE)
-<img width="1920" height="1080" alt="image" src="https://github.com/user-attachments/assets/24c75dd2-98c7-4f36-a917-1207d0c193b4" />
-<img width="1920" height="1080" alt="image" src="https://github.com/user-attachments/assets/6b09e4cb-b4e7-4ac3-989b-cbb82b52c0b7" />
----
+## Security Vulnerabilities
 
-## PRAKTIKUM 7
-### BUTTON EDIT & DELETE
-<img width="1920" height="1080" alt="image" src="https://github.com/user-attachments/assets/ce0cc871-500b-4a1b-9e6f-b604b6e25c56" />
+If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
 
-### HASIL
-<img width="1920" height="1080" alt="image" src="https://github.com/user-attachments/assets/1040bfd5-0e48-4051-a1a6-b768a457f622" />
+## License
 
----
-## UCP 1
-### Tampilan Form Tambah Kategori
-<img width="1920" height="1080" alt="image" src="https://github.com/user-attachments/assets/2cfc13ef-d557-46f1-9fd1-a5ab6f17a74e" />
-
-### Tampilan List Category sesudah di tambahkan
-<img width="1920" height="1080" alt="image" src="https://github.com/user-attachments/assets/39dd1745-fd10-4fe6-bd94-ce85bfa8d2c6" />
-
-### Tampilan Edit Kategori
-<img width="1920" height="1080" alt="image" src="https://github.com/user-attachments/assets/11185bd8-a2e6-47ab-a2e9-24c5b77d6cc7" />
-
-### Tampilan Form Add Product ubah dengan relasi ke Kategori
-<img width="1920" height="1080" alt="image" src="https://github.com/user-attachments/assets/90e2c166-b1cc-42e3-8a75-7b44e252328b" />
-
-### Tampilan Form Edit Product ubah dengan relasi ke Kategori
-<img width="1920" height="1080" alt="image" src="https://github.com/user-attachments/assets/64cfa911-bc54-473a-8ed6-822cdb739577" />
-
-### Tampilan Product List sesudah di relasikan ke kategori
-<img width="1920" height="1080" alt="image" src="https://github.com/user-attachments/assets/17216f81-df36-435a-987d-c1901a785cfa" />
-
-### Tampilan  gates untuk memberikan rules akses untuk ke Category 
-<img width="1920" height="1080" alt="image" src="https://github.com/user-attachments/assets/6cc71a2e-6199-4b19-9a2c-93693988c3a3" />
-<img width="1920" height="1080" alt="image" src="https://github.com/user-attachments/assets/2aedd43c-a7fe-4a95-b537-b1d077f01ece" />
-
----
-## PRAKTIKUM 9
-### AUTH TOKEN
-<img width="1919" height="1008" alt="Screenshot 2026-05-08 085308" src="https://github.com/user-attachments/assets/356f405a-c62e-41f6-8c9f-ea43211bbf58" />
-
-### CATEGORY
-### GET
-<img width="1919" height="1005" alt="image" src="https://github.com/user-attachments/assets/5ddb15d8-e7b1-4ec0-8095-a6bf97ed162b" />
-
-### POST
-<img width="1919" height="1009" alt="image" src="https://github.com/user-attachments/assets/8c5751a3-5fd7-4cf9-9075-3ac50850c6b5" />
-
-### PUT
-<img width="1919" height="1011" alt="image" src="https://github.com/user-attachments/assets/1d2e6a7f-bc5a-4d66-915a-d7ea35c296e9" />
-
-### DELETE
-<img width="1919" height="1011" alt="image" src="https://github.com/user-attachments/assets/dc9ee7c4-63c5-4787-9d0a-2900ac3b3a5e" />
-
-
-
-
-
-
-
-
-
-
-
-
+The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).

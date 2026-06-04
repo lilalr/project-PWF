@@ -3,63 +3,62 @@
 namespace App\Http\Controllers;
 
 use App\Models\Product;
-use App\Models\User;
+use App\Models\Category;
 use Illuminate\Http\Request;
-use App\Http\Requests\StoreProductRequest;
-use App\Http\Requests\UpdateProductRequest;
 
 class ProductController extends Controller
 {
     public function index()
     {
-        $products = Product::all();
-        return view('product.index', compact('products'));
-    }
-
-    public function store(StoreProductRequest $request)
-    {
-        $validated = $request->validated();
-
-        Product::create($validated);
-        return redirect()->route('product.index')->with('success', 'Product created successfully.');
+        $products = Product::with('category')->get();
+        return view('products.index', compact('products'));
     }
 
     public function create()
     {
-        $users = User::orderBy('name')->get();
-        $categories = \App\Models\Category::orderBy('name')->get(); 
-        return view('product.create', compact('users', 'categories'));
+        $categories = Category::all();
+        return view('products.create', compact('categories'));
     }
 
-    public function show($id)
+    public function store(Request $request)
     {
-        $product = Product::findOrFail($id);
-        return view('product.view', compact('product'));
-    }
+        $validated = $request->validate([
+            'name' => 'required|string|max:255',
+            'description' => 'nullable|string',
+            'price' => 'required|numeric',
+            'stock' => 'required|integer',
+            'category_id' => 'required|exists:categories,id',
+            'image' => 'nullable|string'
+        ]);
 
-    public function update(UpdateProductRequest $request, $id)
-    {
-        $product = Product::findOrFail($id);
-        Gate::authorize('update', $product);
-
-        $validated = $request->validated();
-
-        $product->update($validated);
-        return redirect()->route('product.index')->with('success', 'Product updated successfully.');
+        Product::create($validated);
+        return redirect()->route('products.index')->with('success', 'Product created successfully.');
     }
 
     public function edit(Product $product)
     {
-        Gate::authorize('update', $product); 
-        $users = User::orderBy('name')->get();
-        return view('product.edit', compact('product', 'users'));
+        $categories = Category::all();
+        return view('products.edit', compact('product', 'categories'));
     }
 
-    public function delete($id)
+    public function update(Request $request, Product $product)
     {
-        $product = Product::findOrFail($id);
-        Gate::authorize('delete', $product);
+        $validated = $request->validate([
+            'name' => 'required|string|max:255',
+            'description' => 'nullable|string',
+            'price' => 'required|numeric',
+            'stock' => 'required|integer',
+            'category_id' => 'required|exists:categories,id',
+            'image' => 'nullable|string'
+        ]);
+
+        $product->update($validated);
+        return redirect()->route('products.index')->with('success', 'Product updated successfully.');
+    }
+
+    public function destroy(Product $product)
+    {
         $product->delete();
-        return redirect()->route('product.index')->with('success', 'Product berhasil dihapus');
+        return redirect()->route('products.index')->with('success', 'Product deleted successfully.');
     }
 }
