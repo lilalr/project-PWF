@@ -63,7 +63,6 @@
                 @endforelse
             </div>
         </div>
-    </div>
 
         <!-- Custom Delete Confirmation Modal -->
         <div x-show="deleteOpen" x-cloak class="fixed inset-0 z-50 overflow-y-auto flex items-center justify-center p-4" aria-labelledby="modal-title" role="dialog" aria-modal="true" style="display: none;">

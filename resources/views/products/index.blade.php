@@ -37,7 +37,7 @@
                             </div>
                             <div class="absolute bottom-3 left-3">
                                 <span class="px-2.5 py-1 bg-[#2E2C2A]/90 text-[10px] uppercase tracking-wider font-semibold rounded-sm text-[#F9F6F0]">
-                                    Stock: {{ $product->stock }}
+                                    Stok: {{ $product->stock }}
                                 </span>
                             </div>
                         </div>
@@ -95,7 +95,6 @@
                 @endforelse
             </div>
         </div>
-    </div>
     
         <!-- Custom Delete Confirmation Modal -->
         <div x-show="deleteOpen" x-cloak class="fixed inset-0 z-50 overflow-y-auto flex items-center justify-center p-4" aria-labelledby="modal-title" role="dialog" aria-modal="true" style="display: none;">

@@ -16,10 +16,10 @@
                         Dashboard
                     </a>
                     <a href="{{ route('categories.index') }}" class="inline-flex items-center px-1 pt-1 border-b-2 text-xs uppercase tracking-widest font-medium transition duration-200 {{ request()->routeIs('categories.*') ? 'border-[#2E2C2A] text-[#2E2C2A]' : 'border-transparent text-[#7A7570] hover:text-[#2E2C2A] hover:border-[#2E2C2A]/30' }}">
-                        Categories
+                        Kategori
                     </a>
                     <a href="{{ route('products.index') }}" class="inline-flex items-center px-1 pt-1 border-b-2 text-xs uppercase tracking-widest font-medium transition duration-200 {{ request()->routeIs('products.*') ? 'border-[#2E2C2A] text-[#2E2C2A]' : 'border-transparent text-[#7A7570] hover:text-[#2E2C2A] hover:border-[#2E2C2A]/30' }}">
-                        Products
+                        Produk
                     </a>
                 </div>
             </div>
@@ -44,7 +44,7 @@
 
                     <x-slot name="content">
                         <x-dropdown-link :href="route('profile.edit')" class="text-xs uppercase tracking-widest text-[#2E2C2A] hover:bg-[#EFEAE2]">
-                            {{ __('Profile') }}
+                            {{ __('Profil') }}
                         </x-dropdown-link>
 
                         <!-- Authentication -->
@@ -79,10 +79,10 @@
                 Dashboard
             </a>
             <a href="{{ route('categories.index') }}" class="block px-4 py-2 border-l-2 text-xs uppercase tracking-widest font-semibold {{ request()->routeIs('categories.*') ? 'border-[#2E2C2A] text-[#2E2C2A] bg-[#F2EDE4]' : 'border-transparent text-[#7A7570] hover:bg-[#F2EDE4] hover:text-[#2E2C2A]' }}">
-                Categories
+                Kategori
             </a>
             <a href="{{ route('products.index') }}" class="block px-4 py-2 border-l-2 text-xs uppercase tracking-widest font-semibold {{ request()->routeIs('products.*') ? 'border-[#2E2C2A] text-[#2E2C2A] bg-[#F2EDE4]' : 'border-transparent text-[#7A7570] hover:bg-[#F2EDE4] hover:text-[#2E2C2A]' }}">
-                Products
+                Produk
             </a>
         </div>
 
@@ -95,7 +95,7 @@
 
             <div class="mt-3 space-y-1">
                 <a href="{{ route('profile.edit') }}" class="block px-4 py-2 text-xs uppercase tracking-widest font-medium text-[#7A7570] hover:text-[#2E2C2A]">
-                    {{ __('Profile') }}
+                    {{ __('Profil') }}
                 </a>
 
                 <!-- Authentication -->

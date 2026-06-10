@@ -11,9 +11,9 @@
             <div class="relative overflow-hidden bg-[#F2EDE4] border border-[#EFEAE2] p-8 mb-8 rounded-sm">
                 <div class="relative z-10">
                     <h3 class="text-3xl font-serif font-light text-[#2E2C2A] mb-2">
-                        Welcome back, {{ Auth::user()->name }}! 🌸
+                        Selamat datang kembali, {{ Auth::user()->name }}! 🌸
                     </h3>
-                    <p class="text-[#5A5550] text-sm font-light">Manage your luxury perfume collection from this dashboard.</p>
+                    <p class="text-[#5A5550] text-sm font-light">Kelola koleksi parfum mewah Anda dari dashboard ini.</p>
                 </div>
             </div>
 
@@ -23,7 +23,7 @@
                 <div class="bg-white border border-[#EFEAE2] p-6 rounded-sm hover:border-[#2E2C2A]/30 transition-all duration-300">
                     <div class="flex items-center justify-between">
                         <div>
-                            <p class="text-xs font-semibold text-[#7A7570] uppercase tracking-widest font-sans">Total Products</p>
+                            <p class="text-xs font-semibold text-[#7A7570] uppercase tracking-widest font-sans">Total Produk</p>
                             <p class="text-3xl font-light text-[#2E2C2A] mt-1 font-serif">
                                 {{ \App\Models\Product::count() }}
                             </p>
@@ -38,7 +38,7 @@
                 <div class="bg-white border border-[#EFEAE2] p-6 rounded-sm hover:border-[#2E2C2A]/30 transition-all duration-300">
                     <div class="flex items-center justify-between">
                         <div>
-                            <p class="text-xs font-semibold text-[#7A7570] uppercase tracking-widest font-sans">Categories</p>
+                            <p class="text-xs font-semibold text-[#7A7570] uppercase tracking-widest font-sans">Kategori</p>
                             <p class="text-3xl font-light text-[#2E2C2A] mt-1 font-serif">
                                 {{ \App\Models\Category::count() }}
                             </p>
@@ -53,7 +53,7 @@
                 <div class="bg-white border border-[#EFEAE2] p-6 rounded-sm hover:border-[#2E2C2A]/30 transition-all duration-300">
                     <div class="flex items-center justify-between">
                         <div>
-                            <p class="text-xs font-semibold text-[#7A7570] uppercase tracking-widest font-sans">Total Stock</p>
+                            <p class="text-xs font-semibold text-[#7A7570] uppercase tracking-widest font-sans">Total Stok</p>
                             <p class="text-3xl font-light text-[#2E2C2A] mt-1 font-serif">
                                 {{ \App\Models\Product::sum('stock') }}
                             </p>
@@ -73,8 +73,8 @@
                             <svg class="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"></path></svg>
                         </div>
                         <div>
-                            <h4 class="text-base uppercase tracking-wider font-semibold text-[#2E2C2A] font-serif">Add New Product</h4>
-                            <p class="text-xs text-[#7A7570] font-light mt-1">Add a new perfume to your collection</p>
+                            <h4 class="text-base uppercase tracking-wider font-semibold text-[#2E2C2A] font-serif">Tambah Produk Baru</h4>
+                            <p class="text-xs text-[#7A7570] font-light mt-1">Tambahkan parfum baru ke koleksi Anda</p>
                         </div>
                     </div>
                 </a>
@@ -85,8 +85,8 @@
                             <svg class="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"></path></svg>
                         </div>
                         <div>
-                            <h4 class="text-base uppercase tracking-wider font-semibold text-[#2E2C2A] font-serif">Add New Category</h4>
-                            <p class="text-xs text-[#7A7570] font-light mt-1">Create a new fragrance category</p>
+                            <h4 class="text-base uppercase tracking-wider font-semibold text-[#2E2C2A] font-serif">Tambah Kategori Baru</h4>
+                            <p class="text-xs text-[#7A7570] font-light mt-1">Buat kategori parfum baru</p>
                         </div>
                     </div>
                 </a>
