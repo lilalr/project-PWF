@@ -56,11 +56,11 @@
                                 </a>
                             @else
                                 <a href="{{ route('login') }}" class="text-xs uppercase tracking-widest text-[#2E2C2A]/80 hover:text-[#2E2C2A] transition duration-200">
-                                    Masuk
+                                    Login
                                 </a>
                                 @if (Route::has('register'))
                                     <a href="{{ route('register') }}" class="text-xs uppercase tracking-widest bg-[#2E2C2A] text-white hover:bg-[#4E4B48] px-4 py-2 transition duration-200">
-                                        Daftar
+                                        Register
                                     </a>
                                 @endif
                             @endauth

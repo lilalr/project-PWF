@@ -88,16 +88,16 @@
                                 <form method="POST" action="{{ route('logout') }}" class="inline">
                                     @csrf
                                     <button type="submit" class="text-rose-900 hover:text-rose-700 font-semibold transition duration-200 ml-4">
-                                        Keluar
+                                        Logout
                                     </button>
                                 </form>
                             @else
                                 <a href="{{ route('login') }}" class="text-[#2E2C2A]/80 hover:text-[#2E2C2A] transition duration-200">
-                                    Masuk
+                                    Login
                                 </a>
                                 @if (Route::has('register'))
                                     <a href="{{ route('register') }}" class="bg-[#2E2C2A] text-white hover:bg-[#4E4B48] px-4 py-2 transition duration-200 ml-2 font-semibold">
-                                        Daftar
+                                        Register
                                     </a>
                                 @endif
                             @endauth
