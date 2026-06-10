@@ -21,6 +21,8 @@
             }
             [x-cloak] { display: none !important; }
         </style>
+        <!-- SweetAlert2 CDN -->
+        <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     </head>
     <body class="antialiased bg-[#F9F6F0] text-[#2E2C2A] font-sans selection:bg-[#EFEAE2] selection:text-[#2E2C2A]" x-data="{ cartOpen: {{ session('open_cart') ? 'true' : 'false' }} }">
         
@@ -48,20 +50,26 @@
 
                 <!-- Navigation Links -->
                 <nav class="hidden md:flex flex-1 justify-center items-center space-x-10 text-xs uppercase tracking-widest font-medium text-[#2E2C2A]/80">
-                    <a href="{{ route('public.home') }}" class="{{ Route::currentRouteName() == 'public.home' ? 'text-[#2E2C2A] font-semibold' : 'hover:text-[#2E2C2A] transition duration-200' }}">Home</a>
-                    <a href="{{ route('public.fragrances') }}" class="{{ Route::currentRouteName() == 'public.fragrances' ? 'text-[#2E2C2A] font-semibold' : 'hover:text-[#2E2C2A] transition duration-200' }}">Fragrances</a>
+                    <a href="{{ route('public.home') }}" class="{{ Route::currentRouteName() == 'public.home' ? 'text-[#2E2C2A] font-semibold' : 'hover:text-[#2E2C2A] transition duration-200' }}">Beranda</a>
+                    <a href="{{ route('public.fragrances') }}" class="{{ Route::currentRouteName() == 'public.fragrances' ? 'text-[#2E2C2A] font-semibold' : 'hover:text-[#2E2C2A] transition duration-200' }}">Parfum</a>
                     <button @click="cartOpen = true" class="hover:text-[#2E2C2A] transition duration-200 uppercase tracking-widest">
-                        Cart ({{ count(session('cart', [])) }})
+                        Keranjang ({{ count(session('cart', [])) }})
                     </button>
                 </nav>
 
                 <!-- Auth & Utility Links -->
                 <div class="flex-1 lg:flex-none flex items-center justify-end space-x-6">
-                    <button class="text-[#2E2C2A] hover:opacity-70 transition duration-200">
-                        <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" d="m21 21-5.197-5.197m0 0A7.5 7.5 0 1 0 5.196 5.196a7.5 7.5 0 0 0 10.602 10.602Z" />
-                        </svg>
-                    </button>
+                    <!-- Search Form Toggle -->
+                    <div x-data="{ searchOpen: false }" class="flex items-center space-x-2">
+                        <form action="{{ route('public.fragrances') }}" method="GET" class="flex items-center space-x-2">
+                            <input x-show="searchOpen" x-transition type="text" name="search" placeholder="Cari parfum..." value="{{ request('search') }}" class="bg-transparent border-b border-[#2E2C2A] text-[#2E2C2A] placeholder-[#7A7570] py-1 px-2 focus:outline-none text-xs font-light w-40" x-cloak>
+                            <button type="button" @click="searchOpen ? (this.closest('form').submit()) : (searchOpen = true)" class="text-[#2E2C2A] hover:opacity-70 transition duration-200">
+                                <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" d="m21 21-5.197-5.197m0 0A7.5 7.5 0 1 0 5.196 5.196a7.5 7.5 0 0 0 10.602 10.602Z" />
+                                </svg>
+                            </button>
+                        </form>
+                    </div>
 
                     @if (Route::has('login'))
                         <div class="flex items-center space-x-4 border-l border-[#EFEAE2] pl-6 text-xs uppercase tracking-widest font-medium">
@@ -72,7 +80,7 @@
                                     </a>
                                 @else
                                     <span class="text-[#7A7570] font-light">
-                                        Hi, {{ explode(' ', Auth::user()->name)[0] }}!
+                                        Halo, {{ explode(' ', Auth::user()->name)[0] }}!
                                     </span>
                                 @endif
 
@@ -80,16 +88,16 @@
                                 <form method="POST" action="{{ route('logout') }}" class="inline">
                                     @csrf
                                     <button type="submit" class="text-rose-900 hover:text-rose-700 font-semibold transition duration-200 ml-4">
-                                        Logout
+                                        Keluar
                                     </button>
                                 </form>
                             @else
                                 <a href="{{ route('login') }}" class="text-[#2E2C2A]/80 hover:text-[#2E2C2A] transition duration-200">
-                                    Log in
+                                    Masuk
                                 </a>
                                 @if (Route::has('register'))
                                     <a href="{{ route('register') }}" class="bg-[#2E2C2A] text-white hover:bg-[#4E4B48] px-4 py-2 transition duration-200 ml-2 font-semibold">
-                                        Register
+                                        Daftar
                                     </a>
                                 @endif
                             @endauth
@@ -131,7 +139,7 @@
 
                 <!-- Header -->
                 <div class="border-b border-[#EFEAE2] pb-4 mb-6">
-                    <h2 class="text-2xl font-serif font-light text-[#2E2C2A]" id="modal-title">Shopping Cart</h2>
+                    <h2 class="text-2xl font-serif font-light text-[#2E2C2A]" id="modal-title">Keranjang Belanja</h2>
                 </div>
 
                 <!-- Cart Items List -->
@@ -150,11 +158,11 @@
                                         <h3 class="font-serif text-xl text-[#2E2C2A] font-normal leading-tight">{{ $item['name'] }}</h3>
                                         <p class="text-xs text-[#7A7570] font-light mt-0.5">{{ $item['scent_notes'] }}</p>
                                     </div>
-                                    <span class="text-sm font-semibold text-[#2E2C2A]">${{ number_format($item['price'], 0) }}</span>
+                                    <span class="text-sm font-semibold text-[#2E2C2A]">Rp {{ number_format($item['price'], 0, ',', '.') }}</span>
                                 </div>
 
                                 <div class="flex items-center justify-between pt-2">
-                                    <span class="text-xs text-[#7A7570] font-light">Longevity: {{ $item['longevity'] }}</span>
+                                    <span class="text-xs text-[#7A7570] font-light">Ketahanan: {{ $item['longevity'] }}</span>
                                     
                                     <!-- Plus/Minus controls -->
                                     <div class="flex items-center space-x-1.5 border border-[#2E2C2A]/20 bg-[#F2EDE4]/30 rounded-sm">
@@ -187,7 +195,7 @@
                         </div>
                     @empty
                         <div class="text-center py-16 text-[#7A7570] font-light">
-                            Your cart is empty.
+                            Keranjang belanja Anda kosong.
                         </div>
                     @endforelse
                 </div>
@@ -203,17 +211,17 @@
                         @endphp
                         <div class="flex justify-between text-lg font-semibold text-[#2E2C2A] font-serif">
                             <span>Subtotal</span>
-                            <span>${{ number_format($drawerTotal, 0) }}</span>
+                            <span>Rp {{ number_format($drawerTotal, 0, ',', '.') }}</span>
                         </div>
                         
                         <div class="grid grid-cols-2 gap-4">
                             <a href="{{ route('public.cart') }}" class="w-full text-center border border-[#2E2C2A] text-[#2E2C2A] hover:bg-[#EFEAE2] py-3.5 text-xs uppercase tracking-wider font-semibold transition duration-200">
-                                View Full Cart
+                                Lihat Keranjang
                             </a>
                             <form action="{{ route('cart.checkout') }}" method="POST">
                                 @csrf
                                 <button type="submit" class="w-full bg-[#2E2C2A] text-white hover:bg-[#4E4B48] py-3.5 text-xs uppercase tracking-wider font-semibold transition duration-200 shadow-sm">
-                                    Checkout via WhatsApp
+                                    Beli via WhatsApp
                                 </button>
                             </form>
                         </div>
@@ -241,11 +249,11 @@
 
                 <!-- Center Block: Address -->
                 <div class="md:col-span-3 space-y-4 text-sm">
-                    <h3 class="text-xs uppercase tracking-widest font-bold text-[#2E2C2A]">Our Boutique</h3>
+                    <h3 class="text-xs uppercase tracking-widest font-bold text-[#2E2C2A]">Butik Kami</h3>
                     <p class="text-[#7A7570] leading-relaxed">
-                        Jl. Kemang Raya No. 12<br>
-                        Mampang Prapatan, Jakarta Selatan<br>
-                        Indonesia, 12730
+                        Universitas Muhammadiyah Yogyakarta<br>
+                        Jl. Brawijaya, Kasihan, Bantul<br>
+                        Yogyakarta, Indonesia, 55183
                     </p>
                 </div>
 

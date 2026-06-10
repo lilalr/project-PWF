@@ -47,7 +47,7 @@ class DatabaseSeeder extends Seeder
                 'description' => 'A radiant, uplifting floral fragrance featuring fresh notes of violet leaves, warm dry amber, and delicate jasmine petals.',
                 'scent_notes' => 'Violets, Amber & Jasmine',
                 'longevity' => '6-8 Hours',
-                'price' => 120.00,
+                'price' => 120000.00,
                 'stock' => 10,
                 'image' => 'images/perfume_radiance.png',
                 'category_id' => $catEdt->id
@@ -60,7 +60,7 @@ class DatabaseSeeder extends Seeder
                 'description' => 'An earthy, sophisticated scent blending the deep notes of oakmoss with crisp Italian bergamot and warm patchouli.',
                 'scent_notes' => 'Oakmoss, Bergamot & Patchouli',
                 'longevity' => '8-10 Hours',
-                'price' => 120.00,
+                'price' => 120000.00,
                 'stock' => 15,
                 'image' => 'images/perfume_enclaye.png',
                 'category_id' => $catEdt->id
@@ -73,7 +73,7 @@ class DatabaseSeeder extends Seeder
                 'description' => 'A rich, luxurious fragrance featuring sweet damask rose, warm saffron spices, and deep, mysterious oud wood.',
                 'scent_notes' => 'Rose, Saffron & Oud Wood',
                 'longevity' => '10-12 Hours',
-                'price' => 120.00,
+                'price' => 120000.00,
                 'stock' => 8,
                 'image' => 'images/perfume_opulent.png',
                 'category_id' => $catEdp->id
@@ -86,7 +86,7 @@ class DatabaseSeeder extends Seeder
                 'description' => 'A dark, intriguing scent opening with sweet wild blackberries, leading into warm cedarwood and soft white musk.',
                 'scent_notes' => 'Blackberry, Cedarwood & Musk',
                 'longevity' => '6-8 Hours',
-                'price' => 120.00,
+                'price' => 120000.00,
                 'stock' => 12,
                 'image' => 'images/perfume_eclipse.png',
                 'category_id' => $catEdc->id
@@ -99,7 +99,7 @@ class DatabaseSeeder extends Seeder
                 'description' => 'Introducing Velour, our signature fragrance. A sensual, powdery blend of cashmere musk and blooming wild roses.',
                 'scent_notes' => 'Musk & Wild Rose',
                 'longevity' => '8-10 Hours',
-                'price' => 135.00,
+                'price' => 135000.00,
                 'stock' => 5,
                 'image' => 'images/about_perfume.png',
                 'category_id' => $catEdp->id

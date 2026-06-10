@@ -3,7 +3,7 @@
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <title>Order Placed Successfully — LIORA FRAGRANCE</title>
+        <title>Pemesanan Berhasil — LIORA FRAGRANCE</title>
         
         <!-- Google Fonts: Cormorant Garamond & Inter -->
         <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -33,10 +33,10 @@
 
                 <!-- Navigation Links -->
                 <nav class="hidden md:flex flex-1 justify-center items-center space-x-10 text-xs uppercase tracking-widest font-medium text-[#2E2C2A]/80">
-                    <a href="{{ route('public.home') }}" class="hover:text-[#2E2C2A] transition duration-200">Home</a>
-                    <a href="{{ route('public.fragrances') }}" class="hover:text-[#2E2C2A] transition duration-200">Fragrances</a>
+                    <a href="{{ route('public.home') }}" class="hover:text-[#2E2C2A] transition duration-200">Beranda</a>
+                    <a href="{{ route('public.fragrances') }}" class="hover:text-[#2E2C2A] transition duration-200">Parfum</a>
                     <a href="{{ route('public.cart') }}" class="hover:text-[#2E2C2A] transition duration-200">
-                        Cart (0)
+                        Keranjang (0)
                     </a>
                 </nav>
 
@@ -56,11 +56,11 @@
                                 </a>
                             @else
                                 <a href="{{ route('login') }}" class="text-xs uppercase tracking-widest text-[#2E2C2A]/80 hover:text-[#2E2C2A] transition duration-200">
-                                    Log in
+                                    Masuk
                                 </a>
                                 @if (Route::has('register'))
                                     <a href="{{ route('register') }}" class="text-xs uppercase tracking-widest bg-[#2E2C2A] text-white hover:bg-[#4E4B48] px-4 py-2 transition duration-200">
-                                        Register
+                                        Daftar
                                     </a>
                                 @endif
                             @endauth
@@ -81,17 +81,17 @@
                 </div>
 
                 <div class="space-y-4">
-                    <h1 class="text-4xl md:text-5xl font-serif font-light text-[#2E2C2A]">Thank You for Your Order</h1>
-                    <p class="text-xs uppercase tracking-widest text-[#7A7570] font-semibold">Order Reference: LF-{{ rand(10000, 99999) }}</p>
+                    <h1 class="text-4xl md:text-5xl font-serif font-light text-[#2E2C2A]">Terima Kasih Atas Pesanan Anda</h1>
+                    <p class="text-xs uppercase tracking-widest text-[#7A7570] font-semibold">Referensi Pesanan: LF-{{ rand(10000, 99999) }}</p>
                 </div>
 
                 <p class="text-base text-[#5A5550] leading-relaxed font-serif font-light max-w-md mx-auto">
-                    Your order has been placed successfully and is being prepared with utmost care. A confirmation email with details has been sent to your registered address.
+                    Pesanan Anda telah berhasil ditempatkan dan sedang disiapkan dengan sangat hati-hati. Email konfirmasi beserta rincian telah dikirimkan ke alamat terdaftar Anda.
                 </p>
 
                 <div class="pt-6">
                     <a href="{{ route('public.fragrances') }}" class="inline-block bg-[#2E2C2A] text-white hover:bg-[#4E4B48] px-10 py-4 text-xs uppercase tracking-widest font-semibold transition duration-300 shadow-sm">
-                        Continue Shopping
+                        Lanjutkan Belanja
                     </a>
                 </div>
             </div>
@@ -110,11 +110,11 @@
 
                 <!-- Center Block -->
                 <div class="md:col-span-3 space-y-4 text-sm">
-                    <h3 class="text-xs uppercase tracking-widest font-bold text-[#2E2C2A]">Our Boutique</h3>
+                    <h3 class="text-xs uppercase tracking-widest font-bold text-[#2E2C2A]">Butik Kami</h3>
                     <p class="text-[#7A7570] leading-relaxed">
-                        Jl. Kemang Raya No. 12<br>
-                        Mampang Prapatan, Jakarta Selatan<br>
-                        Indonesia, 12730
+                        Universitas Muhammadiyah Yogyakarta<br>
+                        Jl. Brawijaya, Kasihan, Bantul<br>
+                        Yogyakarta, Indonesia, 55183
                     </p>
                 </div>
 

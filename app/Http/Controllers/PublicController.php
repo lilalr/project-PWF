@@ -29,9 +29,20 @@ class PublicController extends Controller
     /**
      * Fragrances page displaying all products with scent descriptions and longevity.
      */
-    public function fragrances()
+    public function fragrances(Request $request)
     {
-        $products = Product::with('category')->get();
+        $query = Product::with('category');
+
+        if ($request->has('search') && !empty($request->search)) {
+            $search = $request->search;
+            $query->where(function($q) use ($search) {
+                $q->where('name', 'like', '%' . $search . '%')
+                  ->orWhere('description', 'like', '%' . $search . '%')
+                  ->orWhere('scent_notes', 'like', '%' . $search . '%');
+            });
+        }
+
+        $products = $query->get();
         return view('fragrances', compact('products'));
     }
 
@@ -70,12 +81,12 @@ class PublicController extends Controller
         if ($request->ajax()) {
             return response()->json([
                 'success' => true,
-                'message' => 'Product added to cart!',
+                'message' => 'Produk berhasil ditambahkan ke keranjang!',
                 'cart_count' => count($cart)
             ]);
         }
 
-        return redirect()->back()->with('success', 'Product added to cart!')->with('open_cart', true);
+        return redirect()->back()->with('success', 'Produk berhasil ditambahkan ke keranjang!')->with('open_cart', true);
     }
 
     /**
@@ -90,7 +101,7 @@ class PublicController extends Controller
             session()->put('cart', $cart);
         }
 
-        return redirect()->back()->with('success', 'Product removed from cart!')->with('open_cart', true);
+        return redirect()->back()->with('success', 'Produk berhasil dihapus dari keranjang!')->with('open_cart', true);
     }
 
     /**
@@ -109,7 +120,7 @@ class PublicController extends Controller
             session()->put('cart', $cart);
         }
 
-        return redirect()->back()->with('success', 'Cart updated successfully!')->with('open_cart', true);
+        return redirect()->back()->with('success', 'Keranjang berhasil diperbarui!')->with('open_cart', true);
     }
 
     /**
@@ -119,20 +130,20 @@ class PublicController extends Controller
     {
         // Checkout requires login
         if (!Auth::check()) {
-            return redirect()->route('login')->with('error', 'Please login to checkout.');
+            return redirect()->route('login')->with('error', 'Silakan login terlebih dahulu untuk melakukan checkout.');
         }
 
         $cart = session()->get('cart', []);
         
         if (empty($cart)) {
-            return redirect()->route('public.cart')->with('error', 'Your cart is empty.');
+            return redirect()->route('public.cart')->with('error', 'Keranjang belanja Anda kosong.');
         }
 
         // Build WhatsApp text
         $user = Auth::user();
         $orderId = 'LF-' . rand(10000, 99999);
         
-        $message = "*🛍️ [LIORA FRAGRANCE] - NEW ORDER*\n";
+        $message = "*🛍️ [LIORA FRAGRANCE] - PESANAN BARU*\n";
         $message .= "--------------------------------------------------\n";
         $message .= "Halo Liora Fragrance, saya ingin memesan produk berikut:\n\n";
         
@@ -140,10 +151,10 @@ class PublicController extends Controller
         foreach ($cart as $id => $item) {
             $sub = $item['price'] * $item['qty'];
             $total += $sub;
-            $message .= "• *" . $item['name'] . "* (" . $item['qty'] . "x) - $" . number_format($sub, 0) . "\n";
+            $message .= "• *" . $item['name'] . "* (" . $item['qty'] . "x) - Rp " . number_format($sub, 0, ',', '.') . "\n";
         }
         
-        $message .= "\n*Total Pembayaran:* *$" . number_format($total, 0) . "*\n";
+        $message .= "\n*Total Pembayaran:* *Rp " . number_format($total, 0, ',', '.') . "*\n";
         $message .= "--------------------------------------------------\n";
         $message .= "*Detail Pemesan:*\n";
         $message .= "👤 *Nama:* " . $user->name . "\n";

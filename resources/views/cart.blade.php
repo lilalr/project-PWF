@@ -7,13 +7,13 @@
     <!-- Cart Main Content Section -->
     <section class="w-full py-16 bg-[#F9F6F0]">
         <div class="max-w-5xl mx-auto px-6">
-            <h1 class="text-4xl md:text-5xl font-serif font-light text-[#2E2C2A] mb-12">Your Shopping Cart</h1>
+            <h1 class="text-4xl md:text-5xl font-serif font-light text-[#2E2C2A] mb-12">Keranjang Belanja Anda</h1>
 
             @if (empty($cart))
                 <div class="text-center py-20 bg-[#F2EDE4] border border-[#EFEAE2] space-y-6">
-                    <p class="text-lg text-[#5A5550] font-serif font-light">Your shopping cart is currently empty.</p>
+                    <p class="text-lg text-[#5A5550] font-serif font-light">Keranjang belanja Anda saat ini kosong.</p>
                     <a href="{{ route('public.fragrances') }}" class="inline-block bg-[#2E2C2A] text-white hover:bg-[#4E4B48] px-8 py-3 text-xs uppercase tracking-widest font-semibold transition duration-300">
-                        View All Fragrances
+                        Lihat Semua Parfum
                     </a>
                 </div>
             @else
@@ -35,7 +35,7 @@
                                     <div>
                                         <h3 class="text-lg font-serif text-[#2E2C2A] font-normal leading-tight">{{ $item['name'] }}</h3>
                                         <p class="text-xs text-[#7A7570] font-light mt-0.5">{{ $item['scent_notes'] }}</p>
-                                        <p class="text-xs text-[#2E2C2A] font-semibold mt-1">${{ number_format($item['price'], 0) }}</p>
+                                        <p class="text-xs text-[#2E2C2A] font-semibold mt-1">Rp {{ number_format($item['price'], 0, ',', '.') }}</p>
                                     </div>
                                 </div>
 
@@ -73,7 +73,7 @@
                                         @csrf
                                         @method('DELETE')
                                         <button type="submit" class="text-rose-900 hover:text-rose-700 font-sans text-sm font-medium">
-                                            Remove
+                                            Hapus
                                         </button>
                                     </form>
                                 </div>
@@ -83,21 +83,21 @@
 
                     <!-- Order Summary Card (4 cols) -->
                     <div class="lg:col-span-4 bg-[#F2EDE4] border border-[#EFEAE2] p-8 space-y-6 self-start">
-                        <h2 class="text-xl font-serif text-[#2E2C2A] tracking-wide border-b border-[#EFEAE2] pb-4">Order Summary</h2>
+                        <h2 class="text-xl font-serif text-[#2E2C2A] tracking-wide border-b border-[#EFEAE2] pb-4">Ringkasan Pesanan</h2>
                         
                         <div class="space-y-4 text-sm font-light text-[#5A5550]">
                             <div class="flex justify-between">
                                 <span>Subtotal</span>
-                                <span class="font-medium text-[#2E2C2A]">${{ number_format($subtotal, 0) }}</span>
+                                <span class="font-medium text-[#2E2C2A]">Rp {{ number_format($subtotal, 0, ',', '.') }}</span>
                             </div>
                             <div class="flex justify-between">
-                                <span>Shipping</span>
-                                <span class="text-xs uppercase tracking-widest text-emerald-800 font-semibold">Free</span>
+                                <span>Pengiriman</span>
+                                <span class="text-xs uppercase tracking-widest text-emerald-800 font-semibold">Gratis</span>
                             </div>
                             <div class="h-px bg-[#EFEAE2] my-2"></div>
                             <div class="flex justify-between text-base text-[#2E2C2A] font-semibold">
                                 <span>Total</span>
-                                <span>${{ number_format($subtotal, 0) }}</span>
+                                <span>Rp {{ number_format($subtotal, 0, ',', '.') }}</span>
                             </div>
                         </div>
 
@@ -105,11 +105,11 @@
                         <form action="{{ route('cart.checkout') }}" method="POST">
                             @csrf
                             <button type="submit" class="w-full bg-[#2E2C2A] text-white hover:bg-[#4E4B48] py-4 text-xs uppercase tracking-widest font-semibold transition duration-300 shadow-sm">
-                                Checkout via WhatsApp
+                                Beli via WhatsApp
                             </button>
                         </form>
                         <p class="text-[11px] text-[#7A7570] text-center font-light leading-relaxed">
-                            Note: You must log in to checkout. If you do not have an account, please register.
+                            Catatan: Anda harus login untuk melakukan checkout. Jika Anda belum memiliki akun, silakan mendaftar.
                         </p>
                     </div>
                 </div>
