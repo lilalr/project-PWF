@@ -131,7 +131,7 @@
                         <button type="button" @click="deleteOpen = false" class="px-6 py-3 border border-[#2E2C2A] text-[#2E2C2A] hover:bg-[#EFEAE2] text-xs uppercase tracking-wider font-semibold transition duration-200 rounded-sm">
                             Batal
                         </button>
-                        <button type="submit" class="px-6 py-3 bg-rose-900 text-white hover:bg-rose-950 text-xs uppercase tracking-wider font-semibold transition duration-200 shadow-sm rounded-sm">
+                        <button type="submit" class="px-6 py-3 bg-[#2E2C2A] text-white hover:bg-rose-950 text-xs uppercase tracking-wider font-semibold transition duration-200 shadow-sm rounded-sm">
                             Ya, Hapus
                         </button>
                     </div>
